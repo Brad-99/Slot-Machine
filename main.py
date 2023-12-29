@@ -23,13 +23,24 @@ def get_slot_machine_spin(rows, cols, symbols):
     columns = []
     for _ in range(cols):
         column = []
-        current_symbols = all_symbols[:] # Slice operator
+        current_symbols = all_symbols[:] # make a copy of all_symbols using Slice operator[:] 
         for _ in range(rows):
             value = random.choice(current_symbols)
             current_symbols.remove(value)
             column.append(value)
     
         columns.append(column)
+    return columns
+
+def print_slot_machine(columns): # Transpose the Matrix
+    for row in range(len(columns[0])):
+        for i, column in enumerate(columns):
+            if i != len(columns) - 1:
+                print(column[row], "|")
+            else:
+                print(column[row])
+            print(column[row], "|")
+
 
 def deposit():
     while True:
@@ -85,8 +96,10 @@ def main():
         else:
             break
 
-    print(f"You are betting ${bet} on {lines} lines. Total bet is equal to: ${total_bet}")
+    print(F"You are betting ${bet} on {lines} lines. Total bet is equal to: ${total_bet}")
     
-    print(balance, lines)
+    slots = get_slot_machine_spin(ROWS, COLS, symbol_count)
+    print_slot_machine(slots)
+
     
 main()
