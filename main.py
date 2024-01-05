@@ -22,6 +22,9 @@ symbol_value = {
     "D": 2
 }
 
+def wish_player_luck():
+    print("Welcome to the Slot Machine Game!")
+    print("Best of luck! May the symbols align in your favor!\n")
 
 def check_winnings(columns, lines, bet, values):
     winnings = 0
@@ -130,6 +133,7 @@ def spin(balance):
     return winnings - total_bet
 
 def main():
+    wish_player_luck()  # Add a wish for good luck at the beginning
     balance = deposit()
     while True:
         print(F"Current balance is: ${balance}")
